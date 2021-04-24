@@ -66,7 +66,7 @@ export default function ArticleCard({ article }) {
             />
             <CardMedia
                 className={classes.media}
-                image={""}
+                image={"http://localhost:3001/public/uploads/" + coverPicture}
                 title="Paella dish"
             />
             <CardContent>

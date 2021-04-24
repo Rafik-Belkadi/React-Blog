@@ -9,6 +9,8 @@ import MenuIcon from '@material-ui/icons/Menu';
 import LoginModal from '../utils/LoginModal'
 import cookie from 'react-cookies'
 import { UserContext } from '../../contexts'
+import AddArticleModal from '../utils/AddArticleModal'
+
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
@@ -40,12 +42,14 @@ export default function ButtonAppBar() {
                         <MenuIcon />
                     </IconButton>
                     <Typography variant="h6" className={classes.title}>
-                        {user ? user.user.name : "News"}
+                        {user.user ? user?.user?.name : "News"}
                     </Typography>
-                    <Button onClick={disconnect} variant="contained" style={{ background: "red", color: "white" }} > Se déconnecter </Button>
                     {
-                        user ? <Button variant="contained" style={{ background: "green", color: "white" }} > Ajouter un article </Button > :
-                            <LoginModal />
+                        user.user && <Button onClick={disconnect} variant="contained" style={{ background: "red", color: "white", marginRight: 10 }} > Se déconnecter </Button>
+                    }
+
+                    {
+                        user.user ? <AddArticleModal /> :  <LoginModal />
                     }
                 </Toolbar>
             </AppBar>
