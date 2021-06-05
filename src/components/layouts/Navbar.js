@@ -42,14 +42,14 @@ export default function ButtonAppBar() {
                         <MenuIcon />
                     </IconButton>
                     <Typography variant="h6" className={classes.title}>
-                        {user.user ? user?.user?.name : "News"}
+                        {user?.user ? user?.user?.name : "News"}
                     </Typography>
                     {
-                        user.user && <Button onClick={disconnect} variant="contained" style={{ background: "red", color: "white", marginRight: 10 }} > Se déconnecter </Button>
+                        user?.user && <Button onClick={disconnect} variant="contained" style={{ background: "red", color: "white", marginRight: 10 }} > Se déconnecter </Button>
                     }
 
                     {
-                        user.user ? <AddArticleModal /> :  <LoginModal />
+                        user?.user ? <AddArticleModal /> :  <LoginModal />
                     }
                 </Toolbar>
             </AppBar>

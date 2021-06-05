@@ -5,6 +5,9 @@ import Layout from './components/layouts';
 import { useState, useEffect } from 'react'
 import { ArticlesContext, UserContext } from './contexts'
 import axios from 'axios'
+//  Importer Switch et Router
+import { Switch,Route } from 'react-router-dom'
+import ArticlesDetails from './components/ArticleDetailsSection';
 function App() {
   const [articles, setArticles] = useState([]);
   const [user, setUser] = React.useState(null)
@@ -19,7 +22,20 @@ function App() {
       <ArticlesContext.Provider value={{ articles, setArticles }}>
         <UserContext.Provider value={{ user, setUser }}>
           <Layout>
-            <Articles />
+            {/* On entoure le contenu ou les composant qu'on veut changer par un composant Switch */}
+            {/* Switch agit comme un switch case; Les conditions sont faite par le composant Route */}
+            <Switch>
+              {/* pour chaque Route, on utilise la prop path="" pour afficher un composant pour un certain chemin  */}
+              <Route exact path="/">
+                <Articles />
+              </Route>
+              
+              <Route path="/:id">
+                <ArticlesDetails />
+              </Route>
+
+
+            </Switch>
           </Layout>
         </UserContext.Provider>
       </ArticlesContext.Provider>
